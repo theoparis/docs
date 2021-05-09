@@ -1,0 +1,10 @@
+baseURL: "https://docs.firenodes.com"
+languageCode: "en-us"
+theme: "terminal"
+title: "FireNodes Documentation"
+params:
+    centerTheme: true
+    fullWidthTheme: false
+    themeColor: "orange"
+    logo:
+        logoText: "FireNodes Documentation"
