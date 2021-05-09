@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FireNodes Documentation</title><link>https://creepinson.github.io/deno-starter/fdpl/</link><description>Recent content on FireNodes Documentation</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://creepinson.github.io/deno-starter/fdpl/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting Started</title><link>https://creepinson.github.io/deno-starter/fdpl/getting-started/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://creepinson.github.io/deno-starter/fdpl/getting-started/</guid><description>Installation git clone https://github.com/creepinson/fdpl cd fdpl Getting Started The configuration file for fdpl is made with typescript and is located at fdpl.ts in the root of the project.
+Configuration Example import type { InputConfig } from &amp;#34;@flowtr/fdpl&amp;#34;; const config: InputConfig = { database: { type: &amp;#34;sqlite&amp;#34;, uri: `sqlite://${process.cwd()}/data/fdpl.sqlite`, }, apps: [ { name: &amp;#34;web&amp;#34;, build: { image: &amp;#34;nginx:alpine&amp;#34;, }, expose: [ { port: { from: 80, }, host: &amp;#34;test.localhost&amp;#34;, }, ], }, ], }; export default config; Configuration Breakdown The first section in the configuration specifies the location of the database.</description><content>&lt;h2 id="installation">Installation&lt;/h2>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">git clone https://github.com/creepinson/fdpl
+cd fdpl
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="getting-started">Getting Started&lt;/h2>
+&lt;p>The configuration file for fdpl is made with typescript and is located at &lt;code>fdpl.ts&lt;/code> in the root of the project.&lt;/p>
+&lt;h3 id="configuration-example">Configuration Example&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#66d9ef">type&lt;/span> { &lt;span style="color:#a6e22e">InputConfig&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@flowtr/fdpl&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">config&lt;/span>: &lt;span style="color:#66d9ef">InputConfig&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;span style="color:#a6e22e">database&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;span style="color:#66d9ef">type&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;sqlite&amp;#34;&lt;/span>,
+&lt;span style="color:#a6e22e">uri&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">`sqlite://&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">process&lt;/span>.&lt;span style="color:#a6e22e">cwd&lt;/span>()&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">/data/fdpl.sqlite`&lt;/span>,
+},
+&lt;span style="color:#a6e22e">apps&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [
+{
+&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;web&amp;#34;&lt;/span>,
+&lt;span style="color:#a6e22e">build&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;span style="color:#a6e22e">image&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;nginx:alpine&amp;#34;&lt;/span>,
+},
+&lt;span style="color:#a6e22e">expose&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [
+{
+&lt;span style="color:#a6e22e">port&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;span style="color:#66d9ef">from&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">80&lt;/span>,
+},
+&lt;span style="color:#a6e22e">host&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;test.localhost&amp;#34;&lt;/span>,
+},
+],
+},
+],
+};
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#a6e22e">config&lt;/span>;
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="configuration-breakdown">Configuration Breakdown&lt;/h3>
+&lt;p>The first section in the configuration specifies the location of the database. You can use postgresql, mysql, and sqlite as the database type.&lt;/p>
+&lt;p>The next section is where you define your apps. Each app must have a name. The build configuration for your app must at least have an docker image specified. In this example, we&amp;rsquo;ve put &lt;code>nginx&lt;/code>, which is a web server with a demo website applied by default.&lt;/p>
+&lt;p>The expose option of an app lets you &lt;em>expose&lt;/em> services to the internet using &lt;a href="https://caddyserver.com">Caddy&lt;/a>. If you do not want to expose a service using a domain, but you want to expose it locally then you can set the host property to &lt;code>false&lt;/code>.&lt;/p></content></item></channel></rss>
